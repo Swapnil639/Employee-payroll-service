@@ -11,13 +11,14 @@ public class EmployeePayrollServiceTest {
     public void given3EmployeeWhenWrittenToFileShouldMatchEmployeeEntries() {
         EmployeePayrollData[] arrayOfEmp = {
                 new EmployeePayrollData(1, "Swapnil", 20000.0),
-                new EmployeePayrollData(2, "Shubham", 40000.0),
-                new EmployeePayrollData(3, "Sahil", 50000.0)
+                new EmployeePayrollData(2, "Sahil", 40000.0),
+                new EmployeePayrollData(3, "Shubham", 50000.0)
         };
         EmployeePayrollService employeePayRollService;
         employeePayRollService = new EmployeePayrollService(Arrays.asList(arrayOfEmp));
         employeePayRollService.writeEmployeePayrollData(EmployeePayrollService.IOService.FILE_IO);
         long entries = employeePayRollService.countEntries(EmployeePayrollService.IOService.FILE_IO);
         Assert.assertEquals(3, entries);
+        employeePayRollService.printData(EmployeePayrollService.IOService.FILE_IO);
     }
 }
